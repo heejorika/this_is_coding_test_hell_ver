@@ -9,20 +9,20 @@
 + **안해오면 밥 사기 🍙**
 
 ## 👨‍💻 Study Crew
----
+
 |이름|Github|블로그|
 |-----|-----|-----|
 |유희정|[@heejorika](https://github.com/heejorika)|[Tistory - 한우](https://sogogi1000inbun.tistory.com/)|
 |송우석|[@songusika](https://github.com/song-wooseok)|Not yet|
 
 ## 💻 Time Table
----
+
 |요일|시간|내용|
 |---|---|---|
 |월-금|00:00 ~ 24:00|문제 해결|
 |일요일|20:00 ~ 21:00|학습내용 공유|
 
 ## 📕 Book
----
+
 ![108466770-862bae00-72c7-11eb-9b12-96c0ea283608](https://user-images.githubusercontent.com/74398096/212357206-c63fd96d-8867-49f8-9f8e-8cc897cab33c.png)
 
