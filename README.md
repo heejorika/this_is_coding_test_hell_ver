@@ -13,7 +13,7 @@
 |이름|Github|블로그|
 |-----|-----|-----|
 |유희정|[@heejorika](https://github.com/heejorika)|[Tistory - 한우](https://sogogi1000inbun.tistory.com/)|
-|송우석|[@songusika](https://github.com/song-wooseok)|Not yet|
+|송우석|[@songusika](https://github.com/song-wooseok)|[Tistory - songusika](https://songusika.tistory.com/)|
 
 ## 💻 Time Table
 
