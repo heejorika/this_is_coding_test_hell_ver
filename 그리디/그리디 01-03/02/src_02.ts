@@ -1,7 +1,7 @@
 const MAX_INPUT_LENGTH = 20;
 const MIN_INPUT_LENGTH = 1;
 
-class MaximumAccumulator{
+class MaximumCumulator{
     private numbers:number[] = [];
 
     constructor(input:string){
@@ -10,6 +10,7 @@ class MaximumAccumulator{
 
     private validateInput(input:string){
         this.validateInputStringLength(input);
+        this.validateCorrectNumberInput(input);
     }
 
     private validateInputStringLength(input:string){
@@ -29,4 +30,5 @@ class MaximumAccumulator{
             this.numbers.push(integer);
         })
     }
+
 }
