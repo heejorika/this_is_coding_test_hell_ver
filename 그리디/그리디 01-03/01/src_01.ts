@@ -1,14 +1,30 @@
 const MAX_ADVENTURER_COUNT = 100_000;
 const MIN_ADVENTURER_COUNT = 1;
 
+class GameGroup{
+    private adventurerFears:number[];
+
+    constructor(){
+        this.adventurerFears = [];
+    }
+
+    pushNewAdventurerFear(fear:number){
+        this.adventurerFears.push(fear);
+    }
+}
+
 class GameGroupCounter{
+
+    private groups:GameGroup[];
     
     constructor(private adventurerCount:number, private fears: number []){
         this.validateInput(adventurerCount, fears);
+        this.ascendingFearArray();
     }
 
     setAdventurerFears(adventurerCount: number, fears:number[]): GameGroupCounter {
         this.validateInput(adventurerCount, fears);
+        this.ascendingFearArray();
         return this;
     }
 
@@ -17,10 +33,10 @@ class GameGroupCounter{
     }
 
     getGroupCount(): number{
-        return 0;
+        return this.groups.length;
     }
 
-    private ascendingArray(): void{
+    private ascendingFearArray(): void{
         let tempArray: number[];
         // sort() 메서드를 통해서 쉽게 정렬할 수 있지만, reduce 매서드 적응을 위해 아래와 같이 구현
         this.fears = this.fears.reduce((tempArray:number[], currentValue:number)=>{
