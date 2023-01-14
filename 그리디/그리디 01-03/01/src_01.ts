@@ -23,7 +23,6 @@ class GameGroup{
         if(this.adventurerFears.length === lastFear){
             this.isComplete = true;
         }
-        this.isComplete = false;
     }
 
     isCompleteGroup(): boolean{
@@ -33,7 +32,7 @@ class GameGroup{
 
 class GameGroupCounter{
 
-    private groups:GameGroup[];
+    private groups:GameGroup[]= [];
     
     constructor(private adventurerCount:number, private fears: number []){
         this.validateInput(adventurerCount, fears);
@@ -47,6 +46,17 @@ class GameGroupCounter{
     }
 
     countMaxGroup(): GameGroupCounter{
+        let currentGroup: GameGroup = new GameGroup();
+
+        for(let index = 0; index<this.fears.length; index++){
+            currentGroup.pushNewAdventurerFear(this.fears[index]);
+
+            if(currentGroup.isCompleteGroup()){
+                this.groups.push(currentGroup);
+                currentGroup = new GameGroup();
+            }
+        }
+
         return this;
     }
 
