@@ -21,7 +21,14 @@ class GameGroupCounter{
     }
 
     private ascendingArray(): void{
-        
+        let tempArray: number[];
+        // sort() 메서드를 통해서 쉽게 정렬할 수 있지만, reduce 매서드 적응을 위해 아래와 같이 구현
+        this.fears = this.fears.reduce((tempArray:number[], currentValue:number)=>{
+            let index = 0;
+            while(index < tempArray.length && currentValue > tempArray[index]) index++;
+            tempArray.splice(index, 0, currentValue);
+            return tempArray;
+        }, []);
     }
 
     private validateInput(adventurerCount: number, fears:number[]): void{
