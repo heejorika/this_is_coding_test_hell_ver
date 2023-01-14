@@ -3,13 +3,31 @@ const MIN_ADVENTURER_COUNT = 1;
 
 class GameGroup{
     private adventurerFears:number[];
+    private isComplete: boolean;
 
     constructor(){
         this.adventurerFears = [];
+        this.isComplete = false;
     }
 
     pushNewAdventurerFear(fear:number){
-        this.adventurerFears.push(fear);
+        if(!this.isComplete) {
+            this.adventurerFears.push(fear);
+        }
+        this.checkGroupIsCompleted(fear);
+    }
+
+    private checkGroupIsCompleted(fear:number): void{
+        let lastFear:number = fear;
+
+        if(this.adventurerFears.length === lastFear){
+            this.isComplete = true;
+        }
+        this.isComplete = false;
+    }
+
+    isCompleteGroup(): boolean{
+        return this.isComplete;
     }
 }
 
