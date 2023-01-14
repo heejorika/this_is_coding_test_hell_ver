@@ -26,6 +26,7 @@ class MaximumAccumulator{
                 throw new Error("숫자를 입력하세요! " + value + "는 숫자가 아닙니다.");
             }
             
+            this.numbers.push(integer);
         })
     }
 }
