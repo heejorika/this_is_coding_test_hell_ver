@@ -58,12 +58,12 @@ class MaximumCumulator{
     }
 }
 // (((5 * 6) + 0) * 7) == 210
-let t1 = new MaximumCumulator("5607").calculateMaximumCumulativeValue();
+let q2_t1 = new MaximumCumulator("5607").calculateMaximumCumulativeValue();
 //((5*6)*7) == 210
-let t2 = new MaximumCumulator("567").calculateMaximumCumulativeValue();
+let q2_t2 = new MaximumCumulator("567").calculateMaximumCumulativeValue();
 //((((0+2)*9)*8)*4) == 576
-let t3 = new MaximumCumulator("02984").calculateMaximumCumulativeValue();
+let q2_t3 = new MaximumCumulator("02984").calculateMaximumCumulativeValue();
 
-console.log(t1 === 210);
-console.log(t2 === 210);
-console.log(t3 === 576);
+console.log(q2_t1 === 210);
+console.log(q2_t2 === 210);
+console.log(q2_t3 === 576);
