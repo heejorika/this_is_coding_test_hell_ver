@@ -37,11 +37,15 @@ class CardFlipGame{
         })
     }
 
-    getMinumumFlipCount(){
+    getMinumumFlipCount(): number{
         this.countAllContinuousCardShape();
+
+        return [...this.continuousCardCount.entries()].reduce((item1, item2)=>{
+            return item1[1] < item2[1] ? item1 : item2
+        })[1];
     }
 
-    private countAllContinuousCardShape(){
+    private countAllContinuousCardShape():void{
         let previousShape = this.cardShapes[0];
 
         this.countContinuousCardShape(previousShape);
@@ -70,3 +74,7 @@ class CardFlipGame{
         return count;
     }
 }
+// answer == 1;
+let q3_t1 = new CardFlipGame("001100").getMinumumFlipCount();
+
+console.log(q3_t1 === 1);
