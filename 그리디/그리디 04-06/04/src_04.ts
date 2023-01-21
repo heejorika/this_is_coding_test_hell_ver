@@ -18,7 +18,15 @@ class ImpossibleMoneyFinder{
     validate(moneys:number[]):void{
         this.validateInputLength(moneys);
         this,this.validateMoneyUnit(moneys);
-        this.moneys = moneys;
+
+        /*
+            sort 매서드의 파라미터로 넘겨준 callback 함수가
+            리턴하는 값이 0보다 적을 경우 a가 b보다 앞
+            리턴하는 값이 0보다 클 경우 b가 a보다 앞
+        */
+        this.moneys = moneys.sort((v1:number, v2:number)=>{
+            return v1 - v2;
+        });
     }
 
     validateInputLength(moneys:number[]):void{
