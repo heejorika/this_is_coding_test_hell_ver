@@ -28,18 +28,15 @@
 - `def __**init__**()` : 초기화
     - `food_times`
     - `K`
-    - `pointer` : 현재 먹고 있는 음식 인덱스
+    - `pointer` : 현재 먹고 있는 음식 인덱스, 결과값
     - `food_time_zeroL` : 다먹은 음식 인덱스 List
 - `def solution(food_times, K)` : 몇 번 음식부터 다시 흡입하면 되는지
     
-    1) food_time_zeroL과 food_times 길이가 같으면 바로 종료 후 -1 return
+    1) 먹은 음식은 -1초 해줌
     
-    2)  현재 food_times[pointer]가 0이라면, 그 음식은 다 먹은 거
+    2) 먹은 음식이 0초가 됐을 경우, food_time_zeroL에 pointer 추가
     
-    - food_time_zeroL에 pointer 추가
-    - 현재 먹어야 할 음식 번호를 찾아야 함→ findNextPointer(pointer)
-    
-    3) 먹은 음식은 -1초 해줌
+    3) food_time_zeroL과 food_times 길이가 같으면 바로 종료 후 -1 return
     
     4) 다음 먹어야 할 음식 번호를 찾아야 함→ findNextPointer(pointer)
     
