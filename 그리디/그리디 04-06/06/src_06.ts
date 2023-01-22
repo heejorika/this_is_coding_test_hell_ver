@@ -48,6 +48,14 @@ class MukBangFoodFinder{
             throw new Error("정상적인 방송 오류 시간을 입력해주세요");
         }
     }
+
+    // private isTableFinished():boolean{
+        
+    // }
+
+    private isFinishedFood(food:number):boolean{
+        return food > 0;
+    }
 }
 
 let q6_t1 = new MukBangFoodFinder([3,1,2], 5);
