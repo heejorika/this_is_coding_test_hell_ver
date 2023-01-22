@@ -50,11 +50,15 @@ class MukBangFoodFinder{
     }
 
     // private isTableFinished():boolean{
-        
+    //     this.foods.forEach(){
+
+    //     }
+
+    //     return 
     // }
 
     private isFinishedFood(food:number):boolean{
-        return food > 0;
+        return food == 0;
     }
 }
 
