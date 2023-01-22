@@ -4,12 +4,8 @@ const MAX_N_LENGTH:number = 1_000;
 const MIN_MONEY_UNIT:number = 1;
 const MAX_MONEY_UNIT:number = 1_000_000;
 
-class PlusCombinator{
-    
-}
-
 class ImpossibleMoneyFinder{
-    private moneys:number[];
+    private moneys:number[] = [];
 
     constructor(moneys:number[]){
         this.validate(moneys)
@@ -42,4 +38,25 @@ class ImpossibleMoneyFinder{
             }
         })
     }
+
+    public getImpossibleMoney():number{
+        let targetMoney:number = 1;
+
+        this.moneys.forEach((currentMoney:number)=>{
+            if(currentMoney > targetMoney){
+                return;
+            }
+            targetMoney += currentMoney;
+        })
+
+        return targetMoney;
+    }
 }
+// answer is 8
+let q4_t1:number = new ImpossibleMoneyFinder([3,2,1,1,9]).getImpossibleMoney();
+//answer is 10
+let q4_t2:number = new ImpossibleMoneyFinder([5,2,1,1]).getImpossibleMoney();
+
+
+console.log(q4_t1 === 8);
+console.log(q4_t2 === 10);
