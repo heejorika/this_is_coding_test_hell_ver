@@ -52,6 +52,35 @@ class BowlingBallMatcher{
             }
         })
     }
-}
+    
+    public getBowlingBallMatchCount():number{
+        let matchResult: number = 0;
 
-let q5_t1 = new BowlingBallMatcher(5,3,[1,3,2,3,2]);
+        this.balls.forEach((currentBallWeight:number, currentBallIndex:number)=>{
+            if(currentBallIndex != this.balls.length){
+                matchResult += this.getDifferentBallWeightCount(currentBallWeight, this.balls.slice(currentBallIndex+1))
+            }
+        });
+
+        return matchResult;
+    }
+
+    private getDifferentBallWeightCount(checkBallWeight:number, otherBallsWeight:number[]):number{
+        let differentWeightBallCount = 0;
+
+        otherBallsWeight.forEach((otherBallsWeight)=>{
+            if(otherBallsWeight != checkBallWeight){
+                differentWeightBallCount++;
+            }
+        })
+
+        return differentWeightBallCount;
+    }
+}
+// answer is 8
+let q5_t1:number = new BowlingBallMatcher(5,3,[1,3,2,3,2]).getBowlingBallMatchCount();
+// answer is 25
+let q5_t2:number = new BowlingBallMatcher(8,5,[1,5,4,3,2,4,5,2]).getBowlingBallMatchCount();
+
+console.log(q5_t1 === 8);
+console.log(q5_t2 === 25);
