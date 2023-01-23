@@ -61,7 +61,7 @@ class FoodTable{
     }
 
     private eatCurrentFood():void{
-        
+        this.foods[this.currentTableIndex]--;
     }
 
 }
