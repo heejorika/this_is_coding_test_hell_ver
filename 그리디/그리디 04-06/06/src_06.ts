@@ -49,13 +49,15 @@ class MukBangFoodFinder{
         }
     }
 
-    // private isTableFinished():boolean{
-    //     this.foods.forEach(){
+    private isTableFinished():boolean{
+        this.foods.forEach((food:number)=>{
+            if(!this.isFinishedFood(food)){
+                return false;
+            }
+        });
 
-    //     }
-
-    //     return 
-    // }
+        return true;
+    }
 
     private isFinishedFood(food:number):boolean{
         return food == 0;
