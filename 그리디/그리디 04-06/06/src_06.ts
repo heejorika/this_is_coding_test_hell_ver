@@ -126,3 +126,17 @@ class MukBangFoodFinder{
         }
     }
 }
+
+
+let q6_table1:FoodTable = new FoodTable([3,1,2]);
+let q6_table2:FoodTable = new FoodTable([8,6,4]);
+
+let mukBang:MukBangFoodFinder = new MukBangFoodFinder(5).setFoodTable(q6_table1);
+mukBang.startMukBang();
+
+mukBang.ininMukBang(15).setFoodTable(q6_table2).startMukBang();
+
+// answer is 1
+console.log(q6_table1.getCurrentTableIndex() === 1);
+// answer is 2
+console.log(q6_table2.getCurrentTableIndex() === 2);
