@@ -7,6 +7,8 @@ const MAX_FOOD_TIMES:number = 1_000_000_000;
 const MIN_BRODCAST_ERROR_TIME:number = 1;
 const MAX_BRODCAST_ERROR_TIME:number = 2 * Math.pow(10,23);
 
+const ALL_FOOD_FINISHED_RESULT = -1;
+
 class FoodTable{
     private foods:number[];
     private currentTableIndex:number = 0;
@@ -37,6 +39,10 @@ class FoodTable{
         })
     }
 
+    private isFinishedFood(food:number):boolean{
+        return food == 0;
+    }
+
     private isTableFinished():boolean{
         this.foods.forEach((food:number)=>{
             if(!this.isFinishedFood(food)){
@@ -47,10 +53,6 @@ class FoodTable{
         return true;
     }
 
-    private isFinishedFood(food:number):boolean{
-        return food == 0;
-    }
-    
     public turnFoodTableToEableFood():void{
         while(this.isFinishedFood(this.currentTableIndex)){
             if(this.currentTableIndex == this.foods.length -1){
@@ -60,8 +62,15 @@ class FoodTable{
         }
     }
 
-    private eatCurrentFood():void{
+    public eatCurrentFood():void{
         this.foods[this.currentTableIndex]--;
+    }
+
+    public getCurrentTableIndex(){
+        if(this.isTableFinished()){
+            return ALL_FOOD_FINISHED_RESULT;
+        }
+        return this.currentTableIndex;
     }
 
 }
@@ -85,6 +94,10 @@ class MukBangFoodFinder{
         if(!(brodcastErrorTime >= MIN_BRODCAST_ERROR_TIME && brodcastErrorTime <= MAX_BRODCAST_ERROR_TIME)){
             throw new Error("정상적인 방송 오류 시간을 입력해주세요");
         }
+    }
+
+    private checkBrodcastError(){
+        return this.currentTime === this.brodcastErrorTime;
     }
 
     private startMukBang(){
