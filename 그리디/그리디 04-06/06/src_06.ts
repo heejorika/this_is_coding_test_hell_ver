@@ -7,19 +7,13 @@ const MAX_FOOD_TIMES:number = 1_000_000_000;
 const MIN_BRODCAST_ERROR_TIME:number = 1;
 const MAX_BRODCAST_ERROR_TIME:number = 2 * Math.pow(10,23);
 
-class MukBangFoodFinder{
+class FoodTable{
     private foods:number[];
-    private brodcastErrorTime:number;
+    private currentTableIndex:number = 0;
 
-    constructor(foods:number[], brodcastErrorTime:number){
-        this.validate(foods, brodcastErrorTime);
-        this.foods = foods;
-        this.brodcastErrorTime = brodcastErrorTime;
-    }
-
-    private validate(foods:number[], brodcastErrorTime:number):void{
+    constructor(foods:number[]){
         this.validateFood(foods);
-        this.validateBrodcastErrorTime(brodcastErrorTime);
+        this.foods = foods;
     }
 
     private validateFood(foods:number[]):void{
@@ -43,12 +37,6 @@ class MukBangFoodFinder{
         })
     }
 
-    private validateBrodcastErrorTime(brodcastErrorTime:number):void{
-        if(!(brodcastErrorTime >= MIN_BRODCAST_ERROR_TIME && brodcastErrorTime <= MAX_BRODCAST_ERROR_TIME)){
-            throw new Error("정상적인 방송 오류 시간을 입력해주세요");
-        }
-    }
-
     private isTableFinished():boolean{
         this.foods.forEach((food:number)=>{
             if(!this.isFinishedFood(food)){
@@ -61,6 +49,24 @@ class MukBangFoodFinder{
 
     private isFinishedFood(food:number):boolean{
         return food == 0;
+    }
+
+}
+
+class MukBangFoodFinder{
+
+    private brodcastErrorTime:number;
+    private currentTime:number = 0;
+
+    constructor(brodcastErrorTime:number){
+        this.validateBrodcastErrorTime(brodcastErrorTime);
+        this.brodcastErrorTime = brodcastErrorTime;
+    }
+
+    private validateBrodcastErrorTime(brodcastErrorTime:number):void{
+        if(!(brodcastErrorTime >= MIN_BRODCAST_ERROR_TIME && brodcastErrorTime <= MAX_BRODCAST_ERROR_TIME)){
+            throw new Error("정상적인 방송 오류 시간을 입력해주세요");
+        }
     }
 }
 
