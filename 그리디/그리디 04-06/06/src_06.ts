@@ -43,7 +43,7 @@ class FoodTable{
         return food == 0;
     }
 
-    private isTableFinished():boolean{
+    public isTableFinished():boolean{
         let result:boolean = true;
 
         this.foods.forEach((food:number)=>{
@@ -56,12 +56,19 @@ class FoodTable{
     }
 
     public turnFoodTableToEableFood():void{
-        while(this.isFinishedFood(this.currentTableIndex)){
-            if(this.currentTableIndex == this.foods.length -1){
-                this.currentTableIndex = 0;
-            }
-            this.currentTableIndex++;
+        this.turnTable();
+
+        if(this.isFinishedFood(this.foods[this.currentTableIndex])){
+            this.turnTable();
         }
+    }
+
+    private turnTable():void{
+        if(this.currentTableIndex == this.foods.length -1){
+            this.currentTableIndex = 0;
+            return;
+        }
+        this.currentTableIndex++;
     }
 
     public eatCurrentFood():void{
@@ -72,7 +79,7 @@ class FoodTable{
         if(this.isTableFinished()){
             return ALL_FOOD_FINISHED_RESULT;
         }
-        return this.currentTableIndex;
+        return this.currentTableIndex+1;
     }
 
 }
@@ -102,8 +109,20 @@ class MukBangFoodFinder{
         return this.currentTime === this.brodcastErrorTime;
     }
 
-    public ininMukBang(brodcastErrorTime:number):void{
+    public ininMukBang(brodcastErrorTime:number):MukBangFoodFinder{
         this.brodcastErrorTime = brodcastErrorTime;
         this.currentTime = 0;
+        return this;
     }   
+
+    public startMukBang(){
+        while(!this.checkBrodcastError() && !this.foodTable.isTableFinished()){
+            this.foodTable.eatCurrentFood();
+            this.foodTable.turnFoodTableToEableFood();
+
+            this.currentTime++;
+            //진행 상황 확인용 로그
+            console.log(this.foodTable);
+        }
+    }
 }
