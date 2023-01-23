@@ -44,13 +44,15 @@ class FoodTable{
     }
 
     private isTableFinished():boolean{
+        let result:boolean = true;
+
         this.foods.forEach((food:number)=>{
             if(!this.isFinishedFood(food)){
-                return false;
+                result = false;
             }
         });
 
-        return true;
+        return result;
     }
 
     public turnFoodTableToEableFood():void{
@@ -78,7 +80,7 @@ class FoodTable{
 class MukBangFoodFinder{
     private brodcastErrorTime:number;
     private currentTime:number = 0;
-    private foodTable:FoodTable;
+    private foodTable!:FoodTable;
 
     constructor(brodcastErrorTime:number){
         this.validateBrodcastErrorTime(brodcastErrorTime);
@@ -100,7 +102,4 @@ class MukBangFoodFinder{
         return this.currentTime === this.brodcastErrorTime;
     }
 
-    private startMukBang(){
-
-    }
 }
