@@ -7,7 +7,7 @@ const MAX_FOOD_TIMES:number = 1_000_000_000;
 const MIN_BRODCAST_ERROR_TIME:number = 1;
 const MAX_BRODCAST_ERROR_TIME:number = 2 * Math.pow(10,23);
 
-const ALL_FOOD_FINISHED_RESULT = -1;
+const ALL_FOOD_FINISHED_RESULT:number = -1;
 
 class FoodTable{
     private foods:number[];
@@ -68,7 +68,7 @@ class FoodTable{
         this.foods[this.currentTableIndex]--;
     }
 
-    public getCurrentTableIndex(){
+    public getCurrentTableIndex():number{
         if(this.isTableFinished()){
             return ALL_FOOD_FINISHED_RESULT;
         }
@@ -98,8 +98,12 @@ class MukBangFoodFinder{
         }
     }
 
-    private checkBrodcastError(){
+    private checkBrodcastError():boolean{
         return this.currentTime === this.brodcastErrorTime;
     }
 
+    public ininMukBang(brodcastErrorTime:number):void{
+        this.brodcastErrorTime = brodcastErrorTime;
+        this.currentTime = 0;
+    }   
 }
