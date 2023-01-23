@@ -50,17 +50,35 @@ class FoodTable{
     private isFinishedFood(food:number):boolean{
         return food == 0;
     }
+    
+    public turnFoodTableToEableFood():void{
+        while(this.isFinishedFood(this.currentTableIndex)){
+            if(this.currentTableIndex == this.foods.length -1){
+                this.currentTableIndex = 0;
+            }
+            this.currentTableIndex++;
+        }
+    }
+
+    private eatCurrentFood():void{
+        
+    }
 
 }
 
 class MukBangFoodFinder{
-
     private brodcastErrorTime:number;
     private currentTime:number = 0;
+    private foodTable:FoodTable;
 
     constructor(brodcastErrorTime:number){
         this.validateBrodcastErrorTime(brodcastErrorTime);
         this.brodcastErrorTime = brodcastErrorTime;
+    }
+
+    public setFoodTable(foodTable:FoodTable):MukBangFoodFinder{
+        this.foodTable = foodTable;
+        return this;
     }
 
     private validateBrodcastErrorTime(brodcastErrorTime:number):void{
@@ -68,6 +86,8 @@ class MukBangFoodFinder{
             throw new Error("정상적인 방송 오류 시간을 입력해주세요");
         }
     }
-}
 
-let q6_t1 = new MukBangFoodFinder([3,1,2], 5);
+    private startMukBang(){
+
+    }
+}
