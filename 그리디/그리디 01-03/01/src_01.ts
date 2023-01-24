@@ -1,5 +1,5 @@
-const MAX_ADVENTURER_COUNT = 100_000;
-const MIN_ADVENTURER_COUNT = 1;
+const MAX_ADVENTURER_COUNT:number = 100_000;
+const MIN_ADVENTURER_COUNT:number = 1;
 
 class GameGroup{
     private adventurerFears:number[];
@@ -99,4 +99,4 @@ let q1_t1 = new GameGroupCounter(9, [6,4,4,4,3,2,2,2,1]).countMaxGroup().getGrou
 let q1_t2 = new GameGroupCounter(5, [2,3,1,2,2]).countMaxGroup().getGroupCount();
 
 console.log(q1_t1 === 3)
-console.log(q2_t2 === 2)
+console.log(q1_t2 === 2)
