@@ -41,8 +41,7 @@ class Game{
     private checkSpicalSkill():boolean{
         let point:number[] = this.numberToList(this.character.getCurrentPoint());
 
-        if(this.checkPointLength(point)){
-            console.log("짝수 점수가 아닙니다 점수를 더 모으세요!")
+        if(this.checkPointLength(point) || !this.checkSpicalRule(point)){
             return false;
         }
 
@@ -51,6 +50,21 @@ class Game{
 
     private checkPointLength(point:number[]):boolean{
         return point.length % 2 != 0;
+    }
+
+
+    private checkSpicalRule(point:number[]):boolean{
+        let leftPart:number[];
+        let rightPart:number[];
+
+        leftPart = point.slice(0, point.length/2);
+        rightPart = point.slice(point.length/2);
+
+        return this.getListSum(leftPart) == this.getListSum(rightPart);
+    }
+
+    private getListSum(list:number[]):number{
+        return list.reduce((result:number, currentValue:number)=>result += currentValue, 0);
     }
 
     private numberToList(input:number):number[]{
