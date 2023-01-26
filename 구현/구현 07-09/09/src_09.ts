@@ -10,7 +10,7 @@ class TextCompressor{
         let compressResults:Map<string, number> = new Map<string, number>();
 
         for(let unit=1; unit<= Math.floor(plainText.length/2); unit++){
-
+            
         }
 
         return 0;
@@ -30,6 +30,29 @@ class TextCompressor{
         return slicedResult;
     }
 
+    private static getCompressedText(slicedText:string[]):string{
+        let result = ""
+        let privousText = slicedText[0];
+        let matchCount = 1;
+
+        for(let i =1; i<=slicedText.length; i++){
+            if(privousText != slicedText[i]){
+                if(matchCount != 1){
+                    result += (matchCount+privousText);
+                    privousText = slicedText[i]
+                    matchCount =1;
+                    continue;
+                }
+                result += privousText;
+                privousText = slicedText[i]
+                continue;
+            }
+            matchCount++;
+        }
+
+        return result;
+    }
+
     private static validate(plainText:string):void{
         this.validatePlainTextLength(plainText);
         this.validatePlainTextValue(plainText);
@@ -46,6 +69,4 @@ class TextCompressor{
             throw new Error("소문자 이외의 다른값이 추가되어 있습니다.");
         }
     }
-
-
 }
