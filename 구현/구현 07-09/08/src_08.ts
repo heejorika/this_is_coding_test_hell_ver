@@ -12,10 +12,13 @@ class RearrangeParser{
     public static parse(originalInput:string):string{
         this.validate(originalInput);
 
-        let alphabets:string[] = [];
-        let numbers:number[] = [];
+        let alphabets:string[] = this.getOnlyAlphabets(originalInput).sort();
+        let numbers:number[] = this.getOnlyNumber(originalInput).sort();
 
-        return "";
+        let arrangedAlphabets:string = alphabets.toString();
+        let cumulatedNumber:number = this.getListSum(numbers);
+
+        return arrangedAlphabets+cumulatedNumber;
     }
     
     private static validate(originalInput:string):void{
@@ -35,7 +38,7 @@ class RearrangeParser{
         }
     }   
 
-    private getOnlyAlphabets(originalInput:string):string[]{
+    private static getOnlyAlphabets(originalInput:string):string[]{
         return [...originalInput].reduce((result:string[], currentValue:string):string[]=>{
             if(this.checkAlphabet(currentValue)){
                 result.push(currentValue);
@@ -45,7 +48,7 @@ class RearrangeParser{
         }, []);
     }
 
-    private getOnlyNumber(originalInput:string):number[]{
+    private static getOnlyNumber(originalInput:string):number[]{
         return [...originalInput].reduce((result:number[], currentValue:string):number[]=>{
             if(this.checkNumber(currentValue)){
                 result.push(Number.parseInt(currentValue));
@@ -55,12 +58,18 @@ class RearrangeParser{
         }, []);
     }
 
-    private checkAlphabet(value:string):boolean{
+    private static checkAlphabet(value:string):boolean{
         return (value.charCodeAt(0) >= ALPHABET_A_ASCII && value.charCodeAt(0) <= ALPHABET_Z_ASCII);
     }
 
-    private checkNumber(value:string):boolean{
+    private static checkNumber(value:string):boolean{
         return (value.charCodeAt(0) >= NUMBER_0_ASCII && value.charCodeAt(0) <= NUMBER_9_ASCII);
+    }
+
+    private static getListSum(list:number[]){
+        return list.reduce((result, currentValue):number=>{
+            return result += currentValue;
+        }, 0)
     }
 }
 
