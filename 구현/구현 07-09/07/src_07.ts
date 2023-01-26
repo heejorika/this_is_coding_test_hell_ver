@@ -29,6 +29,10 @@ class OutBoxer implements Character{
     public getCurrentPoint():number{
         return this.point;
     }
+
+    public setPoint(point:number):void{
+        this.point = point;
+    }
 }
 
 class Game{
@@ -88,4 +92,14 @@ class Game{
     }
 }
 
-let outBoxer:OutBoxer = new OutBoxer(1234);
+let outBoxer:OutBoxer = new OutBoxer(123402);
+let game:Game = new Game();
+
+let q7_t1 = game.setCharacter(outBoxer).isSpicalSkillSatisfied();
+
+outBoxer.setPoint(7755);
+
+let q7_t2 = game.isSpicalSkillSatisfied();
+
+console.log(q7_t1 === READY_TO_LUCKY_STRAIGHT);
+console.log(q7_t2 === NOT_READY_TO_LUCKY_STRAIGHT);
