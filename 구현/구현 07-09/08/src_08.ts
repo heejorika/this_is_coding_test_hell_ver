@@ -15,7 +15,7 @@ class RearrangeParser{
         let alphabets:string[] = this.getOnlyAlphabets(originalInput).sort();
         let numbers:number[] = this.getOnlyNumber(originalInput).sort();
 
-        let arrangedAlphabets:string = alphabets.toString();
+        let arrangedAlphabets:string = alphabets.join("");
         let cumulatedNumber:number = this.getListSum(numbers);
 
         return arrangedAlphabets+cumulatedNumber;
@@ -72,6 +72,7 @@ class RearrangeParser{
         }, 0)
     }
 }
-
-RearrangeParser.parse("K1KA5CB7");
-RearrangeParser.parse("AJKDLSI412K4JSJ9D");
+//answer is ABCKK13
+console.log(RearrangeParser.parse("K1KA5CB7") === "ABCKK13");
+//answer is ADDIJJJKKLSS20
+console.log(RearrangeParser.parse("AJKDLSI412K4JSJ9D") === "ADDIJJJKKLSS20");
