@@ -45,8 +45,22 @@ class RearrangeParser{
         }, []);
     }
 
+    private getOnlyNumber(originalInput:string):number[]{
+        return [...originalInput].reduce((result:number[], currentValue:string):number[]=>{
+            if(this.checkNumber(currentValue)){
+                result.push(Number.parseInt(currentValue));
+            }
+
+            return result;
+        }, []);
+    }
+
     private checkAlphabet(value:string):boolean{
         return (value.charCodeAt(0) >= ALPHABET_A_ASCII && value.charCodeAt(0) <= ALPHABET_Z_ASCII);
+    }
+
+    private checkNumber(value:string):boolean{
+        return (value.charCodeAt(0) >= NUMBER_0_ASCII && value.charCodeAt(0) <= NUMBER_9_ASCII);
     }
 }
 
