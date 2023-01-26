@@ -4,17 +4,20 @@ const MAX_POINT_VALUE:number = 99_999_999;
 const READY_TO_LUCKY_STRAIGHT:string = "LUCKY";
 const NOT_READY_TO_LUCKY_STRAIGHT:string = "READY";
 
+interface Character{
+    getCurrentPoint():number;
+}
 
-class OutBoxer{
-    private point:number[] = [];
+class OutBoxer implements Character{
+    private point:number;
 
     constructor(point:number){
         this.validate(point);
+        this.point = point;
     }
 
     private validate(point:number):void{
         this.validatePointValue(point);
-        this.validatePointLength(point);
     }
 
     private validatePointValue(point:number):void{
@@ -23,13 +26,31 @@ class OutBoxer{
         }
     }
 
-    private validatePointLength(point:number):void{
-        let result:number[] = this.numberToList(point);
+    public getCurrentPoint():number{
+        return this.point;
+    }
+}
 
-        if((result.length % 2) != 0){
-            throw new Error("짝수 점수를 입력해주세요");
+class Game{
+    private character!:Character;
+
+    public setCharacter(character:Character):void{
+        this.character = character;
+    }
+
+    private checkSpicalSkill():boolean{
+        let point:number[] = this.numberToList(this.character.getCurrentPoint());
+
+        if(this.checkPointLength(point)){
+            console.log("짝수 점수가 아닙니다 점수를 더 모으세요!")
+            return false;
         }
-        this.point = result;
+
+        return true;
+    }
+
+    private checkPointLength(point:number[]):boolean{
+        return point.length % 2 != 0;
     }
 
     private numberToList(input:number):number[]{
@@ -42,10 +63,6 @@ class OutBoxer{
 
         return result;
     }
-}
-
-class Game{
-
 }
 
 let outBoxer:OutBoxer = new OutBoxer(1234);
