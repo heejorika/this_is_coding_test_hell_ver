@@ -34,8 +34,17 @@ class OutBoxer implements Character{
 class Game{
     private character!:Character;
 
-    public setCharacter(character:Character):void{
+    public setCharacter(character:Character):Game{
         this.character = character;
+        return this;
+    }
+
+    public isSpicalSkillSatisfied():string{
+        if(this.checkSpicalSkill()){
+            return READY_TO_LUCKY_STRAIGHT;
+        }
+
+        return NOT_READY_TO_LUCKY_STRAIGHT;
     }
 
     private checkSpicalSkill():boolean{
