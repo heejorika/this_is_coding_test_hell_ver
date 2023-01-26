@@ -4,16 +4,19 @@ const MAX_PLAIN_TEXT_LENGTH:number = 1_000;
 const LOWCASE_ALPHABET_REGEX:RegExp = /^[a-z]+$/;
 
 class TextCompressor{
-    public static compress(plainText:string):number{
+    public static compress(plainText:string):any{
         this.validate(plainText);
 
         let compressResults:Map<string, number> = new Map<string, number>();
 
         for(let unit=1; unit<= Math.floor(plainText.length/2); unit++){
-            
+            let compressResult:string = this.getCompressedText(this.sliceByUnitSize(plainText, unit));
+            compressResults.set(compressResult, compressResult.length);
         }
 
-        return 0;
+        //각 압축 결과 확인용 로그
+        console.log(compressResults);
+        return Math.min(...compressResults.values());
     }
 
     private static sliceByUnitSize(plainText:string, unit:number):string[]{
@@ -70,3 +73,7 @@ class TextCompressor{
         }
     }
 }
+//answer is 8
+console.log(TextCompressor.compress("abcabcdede") === 8)
+//answer is 17
+console.log(TextCompressor.compress("xababcdcdababcdcd") === 17)
