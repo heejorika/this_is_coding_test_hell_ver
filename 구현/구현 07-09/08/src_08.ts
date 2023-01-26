@@ -11,6 +11,10 @@ const ALPHABET_NUMBER_ONLY_REGEX:RegExp= /^[A-Z0-9]+$/;
 class RearrangeParser{
     public static parse(originalInput:string):string{
         this.validate(originalInput);
+
+        let alphabets:string[] = [];
+        let numbers:number[] = [];
+
         return "";
     }
     
@@ -30,6 +34,20 @@ class RearrangeParser{
             throw new Error("대문자 알파벳과 숫자만 입력해주세요.");
         }
     }   
+
+    private getOnlyAlphabets(originalInput:string):string[]{
+        return [...originalInput].reduce((result:string[], currentValue:string):string[]=>{
+            if(this.checkAlphabet(currentValue)){
+                result.push(currentValue);
+            }
+
+            return result;
+        }, []);
+    }
+
+    private checkAlphabet(value:string):boolean{
+        return (value.charCodeAt(0) >= ALPHABET_A_ASCII && value.charCodeAt(0) <= ALPHABET_Z_ASCII);
+    }
 }
 
 RearrangeParser.parse("K1KA5CB7");
