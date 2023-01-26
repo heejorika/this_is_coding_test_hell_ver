@@ -7,7 +7,27 @@ class TextCompressor{
     public static compress(plainText:string):number{
         this.validate(plainText);
 
+        let compressResults:Map<string, number> = new Map<string, number>();
+
+        for(let unit=1; unit<= Math.floor(plainText.length/2); unit++){
+
+        }
+
         return 0;
+    }
+
+    private static sliceByUnitSize(plainText:string, unit:number):string[]{
+        let currentIndex:number = 0;
+        let slicedIndex:number = unit;
+        let slicedResult:string[] = [];
+
+        while(!(currentIndex >= plainText.length)){
+            slicedResult.push(plainText.slice(currentIndex, slicedIndex));
+            currentIndex = slicedIndex;
+            slicedIndex += unit;
+        }
+
+        return slicedResult;
     }
 
     private static validate(plainText:string):void{
