@@ -34,8 +34,12 @@
         - try~except 사용해서 문자열 거르기
     - `def isEvenNumber(value)` : 입력받은 값이 짝수면 true 반환
     - `def validateNumber(value)` : min, max를 만족하는 수일 때 true 반환
+    - `def validateScore()` : 유효한 점수를 입력 받기 위한 클래스, N 반환
+    - `def inputNowScore()` : 유효한 점수를 저장함
     
 - 게임 클래스
     - `def gameStart()`
         - 캐릭터 클래스를 생성해서 현재 캐릭터 점수 입력받기
     - `def spacialMove()` : 필살기를 쓸 수 있는 지
+    - `def sumList(value)` : 문자열로 이루어진 리스트들을 정수형으로 바꿔 모두 합함
+        - 왼쪽 점수와 오른쪽 점수를 합하기 위함
