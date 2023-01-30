@@ -44,10 +44,12 @@
     - `compressedStr` : 최종 압축된 문자열
 - `def splitStr(value, unit)` : unit만큼 문자열 분리하여 리스트에 넣어 반환
 - `def strCompression(value)` : 입력받은 리스트 안에서 연속된 인덱스에서 같은 원소는 묶어서 문자열로 압축하여 반환
+- `def countStr(count, value)` : 문자열을 합쳐주는 함수
+    - count==1: value의 인접한 원소 둘이 같지 않다는 뜻
 - `~~def selectMinLengthStr()` : unit_dic의 value 중 가장 적은 길이를 가진 value의 key값 리턴~~
 - `def solution(s)` : 문제를 풀 함수
     - `length_list` : 길이값을 저장할 리스트
-    - for unit in range(1, len(s)) → unit의 개수를 하나씩 늘려감
+    - for unit in range(1, len(s)//2) → unit의 개수를 하나씩 늘려감
         - splitStr(value, unit)
         - strCompression(value)
     - return min(length_list)
