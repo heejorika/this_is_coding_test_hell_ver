@@ -24,13 +24,17 @@
 
 - **string 클래스**
 - 초기화
-    - `s` : 소문자로만 이러진 문자열
+    - `string` : 소문자로만 이러진 문자열
+    - `unit_dic` : 기준 개수와 기준 개수대로 묶은 문자열
+    - `S_MIN` : 최솟값
+    - `S_MAX` : 최댓값
 - `def checkInputMinMix(value)` : 입력받은 문자열 길이가 min/max를 만족하면 true 반환
     - 입력된 문자열이 알파벳 소문자로만 이루어져 있는지 순회 공연
 - `def isSmallLetter(value)` : 입력받은 문자열 value가 소문자면 true 반환
-- `def inputValue()` : 문자열 s를 입력받음
+- `def inputS()` : 문자열 s를 입력받음
     - checkInputMinMax()
     - isSmallLetter()
+- `def inputValue()` : 문자열 s를 반복해서 입력받음
 
 - **StringCompression 클래스**
 - 초기화
@@ -40,12 +44,13 @@
     - `compressedStr` : 최종 압축된 문자열
 - `def splitStr(value, unit)` : unit만큼 문자열 분리하여 리스트에 넣어 반환
 - `def strCompression(value)` : 입력받은 리스트 안에서 연속된 인덱스에서 같은 원소는 묶어서 문자열로 압축하여 반환
-- `def selectMinLengthStr()` : unit_dic의 value 중 가장 적은 길이를 가진 value의 key값 리턴
+- `~~def selectMinLengthStr()` : unit_dic의 value 중 가장 적은 길이를 가진 value의 key값 리턴~~
 - `def solution(s)` : 문제를 풀 함수
+    - `length_list` : 길이값을 저장할 리스트
     - for unit in range(1, len(s)) → unit의 개수를 하나씩 늘려감
         - splitStr(value, unit)
         - strCompression(value)
-    - return selectMinLengthStr()
+    - return min(length_list)
 - `def run()`
     - string클래스를 이용하여 s 입력받기
     - solution 메소드를 실행하여 압축된 문자열의 개수 반환
