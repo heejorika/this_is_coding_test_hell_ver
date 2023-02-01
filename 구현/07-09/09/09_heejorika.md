@@ -56,3 +56,23 @@
 - `def run()`
     - string클래스를 이용하여 s 입력받기
     - solution 메소드를 실행하여 압축된 문자열의 개수 반환
+
+## 🔆이슈
+
+- 고려하지 못한 부분
+    - split이 되지 않음 (해결)
+        - 문자열을 냅다 2로 나눠서 슬라이싱이 잘못 됨. unit으로 나눠서 슬라이싱 되도록 함
+    
+    ![image](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/921d6e7a-b0c2-413f-ac6e-a0ef5d6fc254/Untitled.png)
+    
+    - 8개인데 3개의  unit일 경우 뒤에 2자리가 짤림
+        - splitStr 메소드에서 문자열//unit의 나머지가 0이 아닌 경우.
+            - None을 반환하면 안 돼…
+            - 나머지값 반환
+    
+    ![image](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2451862b-9ac2-4d4c-bdca-3b1a0af2799b/Untitled.png)
+    
+    - 문자열 압축 실패의 현장.. 왜 압축했는데 2ababcdcd가 아니라 2a가 되었죠?
+        - 원소의 첫번째 원자 value[0]으로 했기 때문
+    
+    ![image](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d899cdb3-73d0-4568-a229-f7abc7835ebd/Untitled.png)
