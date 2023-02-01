@@ -59,7 +59,7 @@ class FoodTable{
         this.turnTable();
 
         if(this.isFinishedFood(this.foods[this.currentTableIndex])){
-            this.turnTable();
+            this.turnFoodTableToEableFood();
         }
     }
 
@@ -81,7 +81,6 @@ class FoodTable{
         }
         return this.currentTableIndex+1;
     }
-
 }
 
 class MukBangFoodFinder{
